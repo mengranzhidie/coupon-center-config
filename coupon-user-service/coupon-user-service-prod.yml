@@ -1,0 +1,40 @@
+server:
+ port: 10005
+ 
+ 
+spring:
+  application:
+   name: config-server
+   #rabbit mq连接信息,用于bus批量推送
+  rabbitmq:
+    host: 127.0.0.1
+    port:  5672
+    username: guest
+    password: guest
+  cloud:
+    config:
+      server:
+        overrides:
+          #可以定义属性重载
+          mytest: mytest_value
+        git:
+          uri:         https://github.com/mengranzhidie/coupon-center-config
+eureka:
+  client:
+    fetchRegistry: true
+    registerWithEureka: true
+    serviceUrl:
+     defaultZone: http://localhost:10000/eureka,http://localhost:10001/eureka
+     
+     
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+                   
+            
+          
